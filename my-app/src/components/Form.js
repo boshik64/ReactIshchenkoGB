@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "./form.css";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 const Form = ({ create }) => {
   const [message, setMessage] = useState({
@@ -24,24 +27,30 @@ const Form = ({ create }) => {
     <div className="wrap">
       <form className="form">
         <div className="form-control">
-          <input
+          <TextField sx={{ width: 300 }} id="outlined-basic" label="Ваше имя" variant="outlined"
             onChange={(e) => setMessage({ ...message, author: e.target.value })}
             type="text"
-            placeholder="Ваше Имя"
+
             value={message.author}
           />
         </div>
         <div className="form-control">
-          <textarea
+          <TextField sx={{ width: 300 }}
+            id="outlined-multiline-static"
+            label="Текст сообщения"
+            
+            multiline
+            rows={4}
+            
             onChange={(e) =>
               setMessage({ ...message, textMessage: e.target.value })
             }
-            placeholder="Текст сообщения"
+
             value={message.textMessage}
           />
         </div>
         <div className="msg-btn">
-          <button onClick={addNewMessage}>Отправить</button>
+          <Button variant="contained" onClick={addNewMessage}>Отправить</Button>
         </div>
       </form>
     </div>

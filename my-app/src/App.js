@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Form from "./Form";
-import Message from "./Message";
-import "./message.css";
+import Form from "./components/Form";
+import Message from "./components/Message";
+import "./components/message.css";
+import ItemList from "./components/ItemList";
 
 function App() {
   const [messages, setMessage] = useState([]);
@@ -30,7 +31,11 @@ function App() {
   }, [messages]);
 
   return (
-    <div className="App">
+
+    <div className="App" style={{
+      width: 300
+      , border: '2px solid #1565c0', padding: 15, borderRadius: 10
+    }}>
       <header>
         <div className="App-header">
           {messages.map((message) => (
@@ -39,8 +44,15 @@ function App() {
         </div>
       </header>
       <Form create={createMessage} />
+      <ItemList />
+
+
+
+
     </div>
   );
 }
+
+
 
 export default App;
